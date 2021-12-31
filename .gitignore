@@ -1,0 +1,5 @@
+config.ini
+.vscode
+*.log
+*.sqlite3
+__debug_bin.exe
