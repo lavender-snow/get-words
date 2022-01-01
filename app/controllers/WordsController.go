@@ -12,3 +12,11 @@ func GetWord() (string, error) {
 	}
 	return word, nil
 }
+
+func GetPokemon() (string, error) {
+	pokemon, err := models.SelectPokemon()
+	if err != nil {
+		return "", err
+	}
+	return pokemon, nil
+}

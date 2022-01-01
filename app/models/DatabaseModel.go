@@ -80,3 +80,21 @@ func SelectWord() (string, error) {
 
 	return word, nil
 }
+
+// SelectPokemon DBからランダムにポケモンを取得する
+func SelectPokemon() (string, error) {
+	db := connectDB()
+	defer db.Close()
+
+	query := "SELECT pokemon FROM POKEMON ORDER BY RANDOM() LIMIT 1"
+	row := db.QueryRow(query)
+
+	var word string
+	err := row.Scan(&word)
+
+	if err != nil {
+		return "", err
+	}
+
+	return word, nil
+}

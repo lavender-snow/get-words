@@ -9,13 +9,16 @@ import (
 
 // Routes ルート情報を設定
 func Routes(engine *gin.Engine) {
-	v1 := engine.Group("/v1")
-	{
-		v1.GET("/get-words", indexHandler)
-	}
+	engine.GET("/get-words", indexHandler)
+	engine.GET("/get-words/pokemon", pokemonHandler)
 }
 
 func indexHandler(context *gin.Context) {
 	word, _ := controllers.GetWord()
 	context.String(http.StatusOK, word)
+}
+
+func pokemonHandler(context *gin.Context) {
+	pokemon, _ := controllers.GetPokemon()
+	context.String(http.StatusOK, pokemon)
 }
